@@ -330,6 +330,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &855697091 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114520931164014822, guid: d3a60f8069e3243769a4d27a3a4c8b79,
+    type: 2}
+  m_PrefabInternal: {fileID: 2033111656}
+  m_Script: {fileID: 11500000, guid: ecb8115f097804628a2751993a08a329, type: 3}
 --- !u!1 &967037295
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +363,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513c5020b611d4b56b9defe247c8479a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paddleMovsComp:
+  - {fileID: 855697091}
+  - {fileID: 1139447833}
 --- !u!4 &967037297
 Transform:
   m_ObjectHideFlags: 0
@@ -421,6 +430,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3a60f8069e3243769a4d27a3a4c8b79, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1139447833 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114520931164014822, guid: d3a60f8069e3243769a4d27a3a4c8b79,
+    type: 2}
+  m_PrefabInternal: {fileID: 1029892515}
+  m_Script: {fileID: 11500000, guid: ecb8115f097804628a2751993a08a329, type: 3}
 --- !u!1 &1171321145
 GameObject:
   m_ObjectHideFlags: 0
