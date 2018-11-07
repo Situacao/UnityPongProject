@@ -9,7 +9,8 @@ public class PongManager : MonoBehaviour {
 
     private GameObject PongBall;
 
-    private enum MatchState
+    [HideInInspector]
+    public enum MatchState
     {
         ready = 0,
         match = 1,
@@ -25,11 +26,14 @@ public class PongManager : MonoBehaviour {
     private void OnEnable()
     {
         //currentState = MatchState.ready;
+        GlobalVariablesManager.Instance.PointsP1 = 0;
+        GlobalVariablesManager.Instance.PointsP2 = 0;
         ChangeState(MatchState.ready);
+
     }
 
 
-    void ChangeState(MatchState _newState)
+    public void ChangeState(MatchState _newState)
     {
         currentState = _newState;
         switch (currentState)
@@ -39,6 +43,7 @@ public class PongManager : MonoBehaviour {
                 {
                     paddleMovsComp[i].enabled = false;
                 }
+                PongBall.SetActive(false);
                 StartCoroutine(StartReadyCount());
                 break;
             case MatchState.match:
@@ -46,6 +51,7 @@ public class PongManager : MonoBehaviour {
                 {
                     paddleMovsComp[i].enabled = true;
                 }
+                PongBall.SetActive(true);
                 break;
             case MatchState.point:
                 break;
@@ -67,11 +73,11 @@ public class PongManager : MonoBehaviour {
 
     }
 
-    public IEnumerator StartBall()
+    /*public IEnumerator StartBall()
     {
         PongBall.SetActive(false);
         yield return new WaitForSeconds(3f);
         PongBall.SetActive(true);
-    }
+    }*/
 
 }

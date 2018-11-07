@@ -29,7 +29,19 @@ public class BallBehaviour : MonoBehaviour {
         {
             print("GOLO DO MAREGA");
             //StartCoroutine(GameObject.Find("Manager").GetComponent<PongManager>().StartBall());
-            GameObject.Find("Manager").GetComponent<PongManager>().StartCoroutine("StartBall");
+            if (collision.gameObject.name == "WallRight")
+            {
+                GlobalVariablesManager.Instance.PointsP1++;
+            }
+            else
+            {
+                GlobalVariablesManager.Instance.PointsP2++;
+            }
+            print("SCORE P1: " + GlobalVariablesManager.Instance.PointsP1
+                  + " P2: " + GlobalVariablesManager.Instance.PointsP2);
+
+
+            GameObject.Find("Manager").GetComponent<PongManager>().ChangeState(PongManager.MatchState.ready);
 
         }
         else if (collision.gameObject.CompareTag("Match/Wall"))
