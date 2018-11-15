@@ -24,6 +24,7 @@ public class BallBehaviour : MonoBehaviour {
         if (collision.gameObject.CompareTag("Match/Paddle"))
         {
             rigid.velocity = -rigid.velocity;
+            collision.gameObject.transform.parent.GetComponent<Animator>().SetTrigger("willHit");
         }
         else if (collision.gameObject.CompareTag("Match/Goal"))
         {
