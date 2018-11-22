@@ -41,8 +41,9 @@ public class BallBehaviour : MonoBehaviour {
             print("SCORE P1: " + GlobalVariablesManager.Instance.PointsP1
                   + " P2: " + GlobalVariablesManager.Instance.PointsP2);
 
-
-            GameObject.Find("Manager").GetComponent<PongManager>().ChangeState(PongManager.MatchState.ready);
+            PongManager auxManager = GameObject.Find("Manager").GetComponent<PongManager>();
+            auxManager.ChangeState(PongManager.MatchState.ready);
+            auxManager.ChangeScoreText();
 
         }
         else if (collision.gameObject.CompareTag("Match/Wall"))

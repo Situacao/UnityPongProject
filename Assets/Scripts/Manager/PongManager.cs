@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PongManager : MonoBehaviour {
 
+    // Game stuff
+    [Header("    GAMEPLAY STUFF")]
     [SerializeField]
     private PaddleMovement[] paddleMovsComp;
 
@@ -18,6 +21,16 @@ public class PongManager : MonoBehaviour {
     }
     private MatchState currentState;
 
+
+    // UI stuff
+    [Header("    UI STUFF")]
+    [SerializeField]
+    private TextMeshProUGUI readyText;
+    [SerializeField]
+    private TextMeshProUGUI p1ScoreText;
+    [SerializeField]
+    private TextMeshProUGUI p2ScoreText;
+
     void Awake()
     {
         PongBall = GameObject.Find("PongBall");
@@ -28,6 +41,7 @@ public class PongManager : MonoBehaviour {
         //currentState = MatchState.ready;
         GlobalVariablesManager.Instance.PointsP1 = 0;
         GlobalVariablesManager.Instance.PointsP2 = 0;
+        ChangeScoreText();
         ChangeState(MatchState.ready);
 
     }
@@ -60,24 +74,24 @@ public class PongManager : MonoBehaviour {
 
     IEnumerator StartReadyCount()
     {
-        print("3");
+        readyText.gameObject.SetActive(true);
+        readyText.text = "3";
         yield return new WaitForSeconds(1f);
-        print("2");
+        readyText.text = "2";
         yield return new WaitForSeconds(1f);
-        print("1");
+        readyText.text = "1";
         yield return new WaitForSeconds(1f);
-        print("FCP");
+        readyText.text = "GO!";
         yield return new WaitForSeconds(1f);
         ChangeState(MatchState.match);
-
+        readyText.gameObject.SetActive(false);
 
     }
 
-    /*public IEnumerator StartBall()
+    public void ChangeScoreText()
     {
-        PongBall.SetActive(false);
-        yield return new WaitForSeconds(3f);
-        PongBall.SetActive(true);
-    }*/
+        p1ScoreText.text = GlobalVariablesManager.Instance.PointsP1.ToString();
+        p2ScoreText.text = GlobalVariablesManager.Instance.PointsP2.ToString();
+    }
 
 }
